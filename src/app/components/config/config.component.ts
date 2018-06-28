@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
+// Components
 import { ParqueaderoModel } from '../model/parqueadero.model';
 
+// Services
 import { ParqueaderoService } from '../../services/parqueadero.service';
 
 @Component({
@@ -11,13 +14,13 @@ import { ParqueaderoService } from '../../services/parqueadero.service';
 })
 export class ConfigComponent implements OnInit {
 
-  parqueadero: ParqueaderoModel;
+  public parqueadero: ParqueaderoModel;
 
   constructor(private parqueaderoService: ParqueaderoService) {
-    this.loadData();
   }
 
   ngOnInit() {
+    this.loadData();
   }
 
   loadData() {
@@ -25,6 +28,12 @@ export class ConfigComponent implements OnInit {
       this.parqueadero = result as ParqueaderoModel;
       console.log(this.parqueadero);
     });
+  }
+
+  changeConfigData(formData) {
+    console.log(formData);
+    console.log(formData.value);
+    console.log(this.parqueadero);
   }
 
 }
