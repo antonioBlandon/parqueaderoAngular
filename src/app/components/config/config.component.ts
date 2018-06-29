@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 // Components
-import { ParqueaderoModel } from '../model/parqueadero.model';
+import { ParqueaderoModel } from '../../model/parqueadero.model';
 
 // Services
 import { ParqueaderoService } from '../../services/parqueadero.service';
@@ -31,6 +31,7 @@ export class ConfigComponent implements OnInit {
   }
 
   changeConfigData(formData) {
+    this.parqueaderoService.changeConfigData(this.parqueadero);
     console.log(formData);
     console.log(formData.value);
     console.log(this.parqueadero);
