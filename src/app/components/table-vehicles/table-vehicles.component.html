@@ -1,0 +1,17 @@
+<h4 style="text-align: center">Vehiculos En Parqueadero</h4>
+<table class="table table-bordered table-striped div-container">
+    <thead>
+        <tr>
+            <th scope="col">Placa</th>
+            <th scope="col">Fecha Ingreso</th>
+            <th scope="col">Cilindraje</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let vehiculo of vehiculos">
+            <td>{{vehiculo.placa}}</td>
+            <td>{{vehiculo.fechaIngreso}}</td>
+            <td>{{vehiculo.cilindraje}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { VehiculoModel } from '../../model/vehiculo.model';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-enter-vehicle',
+  templateUrl: './enter-vehicle.component.html',
+  styleUrls: ['./enter-vehicle.component.css']
 })
-export class HomeComponent implements OnInit {
+export class EnterVehicleComponent implements OnInit {
 
   vehiculo: VehiculoModel;
 
@@ -16,10 +16,6 @@ export class HomeComponent implements OnInit {
   }
 
   ingresarVehiculo(fromulario: any) {
-
-  }
-
-  obtenerVehiculos() {
 
   }
 

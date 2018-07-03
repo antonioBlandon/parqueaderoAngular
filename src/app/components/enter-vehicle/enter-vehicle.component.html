@@ -1,0 +1,14 @@
+<h4 style="text-align: center">Ingresar Vehiculo</h4>
+<form class="row div-container" (ngSubmit)="ingresarVehiculo(forma)" #forma="ngForm">
+    <div class="form-group">
+        <label for="valorHoraMoto">Placa</label>
+        <input type="text" class="form-control" id="valorHoraMoto" name=valorHoraMoto (ngModel)="vehiculo.placa">
+    </div>
+    <div class="form-group">
+        <label for="valorDiaMoto">Cilindraje</label>
+        <input type="number" class="form-control" id="valorDiaMoto" name="valorDiaMoto" (ngModel)="vehiculo.cilindraje">
+    </div>
+    <div class="center">
+        <button type="submit" class="btn btn-primary mr-2 btn-block">Ingresar</button>
+    </div>
+</form>
