@@ -1,10 +1,19 @@
-<h4 style="text-align: center">Detalle Vehiculo</h4>
-<div class="card div-container" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
+<div *ngIf="vehiculo.placa != null">
+    <h4 style="text-align: center">Detalle Vehiculo</h4>
+    <div class="card div-container" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{vehiculo.placa}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{vehiculo.fechaIngreso | date:'medium'}}</h6>
+            <p class="card-text" *ngIf="vehiculo.cilindraje != 0 && vehiculo.cilindraje != null">{{vehiculo.cilindraje}} C.C</p>
+            <div *ngIf="vehiculo.fechaSalida != null">
+                <p class="card-text">Fecha Salida: {{vehiculo.fechaSalida}}</p>
+                <p class="card-text">Dias En Parqueadero: {{vehiculo.diasEnParqueadero}}</p>
+                <p class="card-text">Horas En Parqueadero: {{vehiculo.horasEnParqueadero}}</p>
+                <p class="card-text">Total: $ {{vehiculo.valorPagado}}</p>
+            </div>
+            <div>
+                <button class="btn btn-dark mr-2 btn-block div-container" (click)="cobrar()" *ngIf="vehiculo.fechaSalida == null">Cobrar</button>
+            </div>
+        </div>
     </div>
 </div>

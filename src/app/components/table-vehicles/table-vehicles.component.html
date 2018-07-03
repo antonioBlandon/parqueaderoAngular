@@ -1,5 +1,5 @@
 <h4 style="text-align: center">Vehiculos En Parqueadero</h4>
-<table class="table table-bordered table-striped div-container">
+<table class="table table-bordered table-hover div-container">
     <thead>
         <tr>
             <th scope="col">Placa</th>
@@ -8,9 +8,9 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let vehiculo of vehiculos">
+        <tr *ngFor="let vehiculo of vehiculos" (click)="verDetalle(vehiculo)">
             <td>{{vehiculo.placa}}</td>
-            <td>{{vehiculo.fechaIngreso}}</td>
+            <td>{{vehiculo.fechaIngreso | date:'medium'}}</td>
             <td>{{vehiculo.cilindraje}}</td>
         </tr>
     </tbody>

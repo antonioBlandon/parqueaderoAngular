@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { VehiculoModel } from '../../model/vehiculo.model';
+
+import { TableVehiclesComponent } from '../table-vehicles/table-vehicles.component';
+import { DetailVehicleComponent } from '../detail-vehicle/detail-vehicle.component';
+import { EnterVehicleComponent } from '../enter-vehicle/enter-vehicle.component';
 
 @Component({
   selector: 'app-home',
@@ -8,15 +12,26 @@ import { VehiculoModel } from '../../model/vehiculo.model';
 })
 export class HomeComponent implements OnInit {
 
+  @ViewChild('tableVehicles') tableVehicles: TableVehiclesComponent;
+  @ViewChild('cardDetailVehicle') cardDetailVehicle: DetailVehicleComponent;
+  @ViewChild('formEnterVehicle') formEnterVehicle: EnterVehicleComponent;
+
   vehiculo: VehiculoModel;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
   }
 
-  obtenerVehiculos() {
+  ngOnInit() {
+    this.formEnterVehicle.emitEvent
+      .subscribe( data => {
+        this.tableVehicles.agregarVehiculo(data);
+      }
+    );
 
+    this.tableVehicles.emitEvent
+      .subscribe( vehiculo => {
+        this.cardDetailVehicle.verVehiculo(vehiculo);
+    });
   }
 
 }

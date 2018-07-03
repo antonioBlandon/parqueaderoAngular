@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { VehiculoModel } from '../../model/vehiculo.model';
 import { VehiculoService } from '../../services/vehiculo.service';
 
@@ -9,6 +9,8 @@ import { VehiculoService } from '../../services/vehiculo.service';
 })
 export class TableVehiclesComponent implements OnInit {
 
+  @Output() emitEvent: EventEmitter<VehiculoModel> = new EventEmitter<VehiculoModel>();
+
   vehiculos: VehiculoModel[] = [];
 
   constructor(private vehiculoService: VehiculoService) {
@@ -18,10 +20,22 @@ export class TableVehiclesComponent implements OnInit {
   ngOnInit() {
   }
 
+  agregarVehiculo(vehiculo: VehiculoModel) {
+    console.log(vehiculo);
+    console.log(this.vehiculos);
+    this.vehiculos.push(vehiculo);
+    console.log(this.vehiculos);
+  }
+
   obtenerVehiculos() {
     this.vehiculoService.getVehiclesInParking().subscribe( result => {
       this.vehiculos = result as VehiculoModel[];
     });
+  }
+
+  verDetalle(vehiculo: VehiculoModel) {
+    console.log(vehiculo);
+    this.emitEvent.emit(vehiculo);
   }
 
 }
