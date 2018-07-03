@@ -15,10 +15,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  ingresarVehiculo(fromulario: any) {
-
-  }
-
   obtenerVehiculos() {
 
   }

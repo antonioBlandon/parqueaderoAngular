@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { VehiculoModel } from '../../model/vehiculo.model';
+import { NgForm } from '@angular/forms';
+import { VigilanteService } from '../../services/vigilante.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-enter-vehicle',
@@ -8,14 +11,26 @@ import { VehiculoModel } from '../../model/vehiculo.model';
 })
 export class EnterVehicleComponent implements OnInit {
 
-  vehiculo: VehiculoModel;
+  vehiculo: VehiculoModel = new VehiculoModel();
+  launchWarning = false;
 
-  constructor() { }
+  constructor(private vigilanteService: VigilanteService) { }
 
   ngOnInit() {
   }
 
-  ingresarVehiculo(fromulario: any) {
+  ingresarVehiculo(formulario: NgForm) {
+
+    if ( formulario.valid ) {
+      this.launchWarning = false;
+      this.vigilanteService.addVehicle(this.vehiculo).subscribe( result => {
+        alert('El vehiculo ingreso exitosamente');
+      }, (error: HttpErrorResponse) => {
+        console.log('Error Add Vehicle: ' + error.name + ' *** ' + error.message);
+      });
+    } else {
+      this.launchWarning = true;
+    }
 
   }
 
