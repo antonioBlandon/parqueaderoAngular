@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { VehiculoModel } from '../../model/vehiculo.model';
 import { VigilanteService } from '../../services/vigilante.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -10,7 +10,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class DetailVehicleComponent implements OnInit {
 
+  @Output() emitEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   vehiculo: VehiculoModel;
+  actualizar: false;
 
   constructor(private vigilanteService: VigilanteService) { }
 
@@ -21,7 +24,8 @@ export class DetailVehicleComponent implements OnInit {
   cobrar() {
     console.log(this.vehiculo);
     this.vigilanteService.outVehicle(this.vehiculo).subscribe(result => {
-      this.vehiculo = result['vehiculo'];
+      this.vehiculo = result['objectReturn'];
+      this.emitEvent.emit(!this.actualizar);
     }, ( error: HttpErrorResponse) => {
 
     });

@@ -32,6 +32,14 @@ export class HomeComponent implements OnInit {
       .subscribe( vehiculo => {
         this.cardDetailVehicle.verVehiculo(vehiculo);
     });
+
+    this.cardDetailVehicle.emitEvent
+    .subscribe( actualizar => {
+      if (actualizar) {
+        this.tableVehicles.obtenerVehiculos();
+        this.cardDetailVehicle.actualizar = false;
+      }
+    });
   }
 
 }

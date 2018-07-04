@@ -27,7 +27,7 @@ export class EnterVehicleComponent implements OnInit {
     if ( formulario.valid ) {
       this.launchWarning = false;
       this.vigilanteService.addVehicle(this.vehiculo).subscribe( result => {
-        this.emitEvent.emit(this.vehiculo);
+        this.emitEvent.emit(result['objectReturn']);
         alert('El vehiculo ingreso exitosamente');
       }, (error: HttpErrorResponse) => {
         console.log('Error Add Vehicle: ' + error.name + ' *** ' + error.message);
