@@ -1,0 +1,27 @@
+<div class="container" style="margin-top: 20px">
+    <h4 style="text-align: center">Historial Vehículos</h4>
+    <table class="table table-bordered table-hover div-container">
+        <thead>
+            <tr>
+                <th scope="col">Placa</th>
+                <th scope="col">Fecha Ingreso</th>
+                <th scope="col">Fecha Salida</th>
+                <th scope="col">Días Cobrados</th>
+                <th scope="col">Horas Cobradas</th>
+                <th scope="col">Total</th>
+                <th scope="col">Cilindraje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let vehiculo of vehiculos">
+                <td>{{vehiculo.placa}}</td>
+                <td>{{vehiculo.fechaIngreso | date:'medium'}}</td>
+                <td>{{vehiculo.fechaSalida | date:'medium'}}</td>
+                <td>{{vehiculo.diasEnParqueadero}}</td>
+                <td>{{vehiculo.horasEnParqueadero}}</td>
+                <td>{{vehiculo.valorPagado}}</td>
+                <td>{{vehiculo.cilindraje}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

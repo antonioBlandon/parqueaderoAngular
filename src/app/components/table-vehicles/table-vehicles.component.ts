@@ -21,10 +21,7 @@ export class TableVehiclesComponent implements OnInit {
   }
 
   agregarVehiculo(vehiculo: VehiculoModel) {
-    console.log(vehiculo);
-    console.log(this.vehiculos);
     this.vehiculos.push(vehiculo);
-    console.log(this.vehiculos);
   }
 
   obtenerVehiculos() {
@@ -34,7 +31,6 @@ export class TableVehiclesComponent implements OnInit {
   }
 
   verDetalle(vehiculo: VehiculoModel) {
-    console.log(vehiculo);
     this.emitEvent.emit(vehiculo);
   }
 

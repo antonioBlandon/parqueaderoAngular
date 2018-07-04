@@ -14,6 +14,7 @@ import { ConfigComponent } from './components/config/config.component';
 import { TableVehiclesComponent } from './components/table-vehicles/table-vehicles.component';
 import { DetailVehicleComponent } from './components/detail-vehicle/detail-vehicle.component';
 import { EnterVehicleComponent } from './components/enter-vehicle/enter-vehicle.component';
+import { HistorialComponent } from './components/historial/historial.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { EnterVehicleComponent } from './components/enter-vehicle/enter-vehicle.
     ConfigComponent,
     TableVehiclesComponent,
     DetailVehicleComponent,
-    EnterVehicleComponent
+    EnterVehicleComponent,
+    HistorialComponent
   ],
   imports: [
     BrowserModule,
